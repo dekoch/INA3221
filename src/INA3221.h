@@ -151,6 +151,9 @@ class INA3221 {
     // Writes 16 bytes to a register.
     void _write(ina3221_reg_t reg, uint16_t *val);
 
+    // Gets shunt voltage in uV.
+    int32_t getShuntVoltage(ina3221_ch_t channel);
+
    public:
     INA3221(ina3221_addr_t addr) : _i2c_addr(addr){};
     // Initializes INA3221
@@ -285,9 +288,6 @@ class INA3221 {
 
     // Excludes channel from filling Shunt-Voltage Sum register.
     void setCurrentSumDisable(ina3221_ch_t channel);
-
-    // Gets shunt voltage in uV.
-    int32_t getShuntVoltage(ina3221_ch_t channel);
 
     // Gets warning alert flag.
     bool getWarnAlertFlag(ina3221_ch_t channel);
